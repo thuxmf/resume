@@ -132,12 +132,29 @@ experience:
         exp-time*: Experience period in Chinese
 ```
 
-### Compilation Instructions
+### Style Files
 
-It is recommanded to compile the package through **Makefile**, by simply executing
+To better customize the resume, one can choose a style file under [styles](styles) simply by passing the filename of the `sty` file, which is implemented by importing the `sty` file via `\usepackage` command.
+
+Concretely, please set the `STYLE_FILE` argument through Makefile, in which the default value is `xia.sty`.
 
 ```shell
-make [{data|data-chinese|resume|rebuild|rebuild-chinese|clean|cleandata|cleanall}]
+# Default usage to generate `tex` files in English, which will load `xia.sty`.
+make data
+# Generates `tex` files in Chinese by loading `name.sty`.
+make data-chinese STYLE_FILE=name.sty
+# Re-compile the resume in English by loading `name.sty`.
+make rebuild STYLE_FILE=name.sty
+# Default usage to re-compile the resume in Chinese, which will load `xia.sty`.
+make rebuild-chinese
+```
+
+### Compilation Instructions
+
+It is recommended to compile the package through **Makefile**, by simply executing
+
+```shell
+make [{data|data-chinese|resume|rebuild|rebuild-chinese|clean|clean-data|clean-all}]
 ```
 
 - `make data` generates necessary `tex` files in English;
@@ -146,16 +163,34 @@ make [{data|data-chinese|resume|rebuild|rebuild-chinese|clean|cleandata|cleanall
 - `make rebuild` first generates necessary `tex` files in English **BY FORCE**, and then generates `resume.pdf`;
 - `make rebuild-chinese` first generates necessary `tex` files in Chinese **BY FORCE**, and then generates `resume.pdf`;
 - `make clean` deletes only intermediate temporary files by LaTeX;
-- `make cleandata` deletes all intermediate temporary files by LaTeX, together with data files under [data](data/);
-- `make cleanall` deletes all intermediate temporary files, together with `resume.pdf` and data files under [data](data/).
+- `make clean-data` deletes all intermediate temporary files by LaTeX, together with data files under [data](data/);
+- `make clean-all` deletes all intermediate temporary files, together with `resume.pdf` and data files under [data](data/).
 
 ## Customization
 
-Please feel free to add more items to your resume (*e.g.*, awards, academic services). In order to do so, one needs to implement the **render commands** in [resume_xia.cls](resume_xia.cls), the **data parser** in [generate_data.py](generate_data.py), and the **data structures** under [raw_data](raw_data). It is recommended to follow the implementation of the existing functionality.
+### Customizing Your Own `sty` File
+
+It is encouraged to design your own style file based on the following steps:
+
+1. Define the **global names** of education, publications, etc;
+2. Define the **info style**;
+3. Define the **environments** for each content;
+4. Define the **render commands** for each content.
+
+### Adding New Contents
+
+Please feel free to add more contents to your resume (*e.g.*, awards, academic services). In order to do so, one needs to:
+
+1. Define the **namespace and empty function** in [resume_xia.cls](resume_xia.cls);
+2. Implement the **data parser** in [generate_data.py](generate_data.py);
+3. Implement the **content name, content environment, and render commands** in **ALL** `sty` files under [styles](styles).
+
+It is recommended to follow the implementation of the existing functionality.
 
 ## TODOList
 
 - [x] Improve the Chinese version.
 - [x] Update the font.
-- [ ] Support different styles of resume.
+- [x] Support different styles of resume.
 - [x] Refine the structure.
+- [ ] Add more style files.

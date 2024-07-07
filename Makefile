@@ -4,6 +4,7 @@ PACKAGE = resume_xia
 DATA = data
 RESUME  = resume
 CLSFILE = $(PACKAGE).cls
+STYLE_FILE = xia.sty
 
 LATEXMK = latexmk
 XELATEX = xelatex
@@ -19,7 +20,7 @@ else
 	SLEEP = sleep
 endif
 
-.PHONY: clean cleandata cleanall cls data data-chinese rebuild rebuild-chinese resume
+.PHONY: clean clean-data clean-all cls data data-chinese rebuild rebuild-chinese resume
 
 cls: $(CLSFILE)
 
@@ -30,24 +31,26 @@ sync-data:
 
 data:
 	mkdir -p $(DATA)
-	$(PYTHON) generate_data.py
+	@echo 'Using style file `$(STYLE_FILE)`'
+	$(PYTHON) generate_data.py --style_file $(STYLE_FILE)
 
 data-chinese:
 	mkdir -p $(DATA)
-	$(PYTHON) generate_data.py --language chinese
+	@echo 'Using style file `$(STYLE_FILE)`'
+	$(PYTHON) generate_data.py --style_file $(STYLE_FILE) --language chinese
 
 clean:
 	$(LATEXMK) -c $(RESUME)
 
-cleandata: clean
+clean-data: clean
 	-@$(RM) data/ xiasetup.tex
 
-cleanall: clean cleandata
+clean-all: clean clean-data
 	-@$(RM) $(RESUME).pdf $(RESUME).synctex.gz $(RESUME).dvi
 
 resume:
 	$(XELATEX) $(RESUME).tex
 
-rebuild: cleandata data sync-data resume
+rebuild: clean-data data sync-data resume
 
-rebuild-chinese: cleandata data-chinese sync-data resume
+rebuild-chinese: clean-data data-chinese sync-data resume

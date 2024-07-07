@@ -13,6 +13,7 @@ INFO_PATH = 'raw_data/info.yml'
 EDU_PATH = 'raw_data/education.yml'
 PUB_PATH = 'raw_data/publication.md'
 EXP_PATH = 'raw_data/experience.yml'
+STYLE_DIR = 'styles'
 
 _ALLOWED_LANGUAGES = ['chinese', 'english']
 
@@ -22,6 +23,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Prepare necessary files.')
     parser.add_argument('--language', type=str, default='english',
                         help='Choose the language ([chinese | english]).')
+    parser.add_argument('--style_file', type=str, default='xia.sty',
+                        help='Filename of the target sty file.')
     return parser.parse_args()
 
 
@@ -34,6 +37,26 @@ def process_idx(idx):
     elif idx % 10 == 3:
         return f'{idx}rd'
     return f'{idx}th'
+
+
+def generate_style(args):
+    """Generate tex file for style."""
+    if not args.style_file.endswith('.sty'):
+        raise ValueError(f'Style file must ends with `.sty`, however, '
+                         f'{args.style_file} received. Please use filename '
+                         f'under `styles` folder.')
+    style_file_path = os.path.join(STYLE_DIR, args.style_file)
+    if not os.path.isfile(style_file_path):
+        raise FileNotFoundError(f'Style file {style_file_path} not found! '
+                                f'Please use ONLY filename under `styles` '
+                                f'folder.')
+
+    style = style_file_path.replace('.sty', '')
+    msg = f'\\usepackage{{{style}}}\n'
+
+    style_path = os.path.join('data', 'style.tex')
+    with open(style_path, 'w') as f:
+        f.write(msg)
 
 
 def generate_info(args):
@@ -148,6 +171,7 @@ def generate_experience():
 def main():
     """Main function."""
     args = parse_args()
+    generate_style(args)
     generate_info(args)
     generate_education()
     generate_publication()
