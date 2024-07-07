@@ -1,0 +1,10 @@
+name: resume_xia
+channels:
+    - pytorch
+    - defaults
+dependencies:
+    - python=3.8.19
+    - pip=24.0
+    - pip:
+        - pyyaml==6.0.1
+        - easydict==1.13

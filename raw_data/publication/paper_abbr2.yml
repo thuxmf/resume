@@ -1,0 +1,11 @@
+paper_abbr:
+    pub-title: Title
+    pub-location: Conference name or journal name
+    pub-status: under
+    pub-author-a: First author
+    pub-contrib-a: equal
+    pub-author-b: Second author
+    pub-contrib-b: equal
+    pub-author-c: Third author
+    pub-author-d: Fourth author
+    pub-contrib-d: corresponding

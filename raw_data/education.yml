@@ -1,0 +1,23 @@
+# Education
+education:
+    # First education.
+    - edu1:
+        edu-school: School in English
+        edu-school*: School in Chinese
+        edu-location: School location in English
+        edu-location*: School location in Chinese
+        edu-intro: Brief intro in English, e.g., GPA, advisor, period
+        edu-intro*: Brief intro in Chinese
+        edu-detail: Detailed information in English, e.g., courses
+        edu-detail*: Detailed information in Chinese
+
+    # Second education.
+    - edu2:
+        edu-school: School in English
+        edu-school*: School in Chinese
+        edu-location: School location in English
+        edu-location*: School location in Chinese
+        edu-intro: Brief intro in English, e.g., GPA, advisor, period
+        edu-intro*: Brief intro in Chinese
+        edu-detail: Detailed information in English, e.g., courses
+        edu-detail*: Detailed information in Chinese

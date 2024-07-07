@@ -1,0 +1,18 @@
+# Personal information
+info:
+    name: Name in English
+    name*: Name in Chinese
+    school: School in English, omit if use `company`
+    school*: School in Chinese, omit if use `company*`
+    school-url: School website
+    department: Department in English
+    department*: Department in Chinese
+    department-url: Department website
+    phone: Phone number
+    email: Email
+    homepage: Homepage, omit if delete
+    googlescholar: Google Scholar page, omit if delete
+    linkedin: LinkedIn page, omit if delete
+    company: Company in English
+    company*: Company in Chinese
+    company-url: Company website
