@@ -13,13 +13,20 @@ SHELL  := /bin/bash
 # make deletion work on Windows
 ifdef SystemRoot
 	RM = del /Q
+	SLEEP = timeout
 else
 	RM = rm -rf
+	SLEEP = sleep
 endif
 
-.PHONY: clean cleandata cleanall cls data data-chinese rebuild rebuild-chinese resume FORCE_MAKE
+.PHONY: clean cleandata cleanall cls data data-chinese rebuild rebuild-chinese resume
 
 cls: $(CLSFILE)
+
+sync-data:
+	if [ -d "${DATA}" ]; then \
+		$(SLEEP) 0.5; \
+	fi
 
 data:
 	mkdir -p $(DATA)
@@ -41,6 +48,6 @@ cleanall: clean cleandata
 resume:
 	$(XELATEX) $(RESUME).tex
 
-rebuild: cleandata data FORCE_MAKE resume
+rebuild: cleandata data sync-data resume
 
-rebuild-chinese: cleandata data-chinese FORCE_MAKE resume
+rebuild-chinese: cleandata data-chinese sync-data resume

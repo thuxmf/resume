@@ -1,4 +1,5 @@
 % Copyright (C) by Mengfei Xia <xiamengfei0409@gmail.com>
+% 07/07/2024 v0.0
 
 \ProvidesClass{resume_xia}
 [07/07/2024 v0.0 Resume Template File @ Mengfei Xia]
@@ -90,18 +91,18 @@
   \expandafter\g@addto@macro\csname xia@#1@@code\endcsname{#2}%
 }
 \xia@define@key{
-	language = {
-		name = language,
-		choices = {
-			chinese,
-			english,
-		},
-		default = {english},
-	},
-	title-color = {
-		name = title@color,
-		default = {cyan},
-	},
+  language = {
+    name = language,
+    choices = {
+      chinese,
+      english,
+    },
+    default = {english},
+  },
+  title-color = {
+    name = title@color,
+    default = {cyan},
+  },
   fontset = {
     choices = {
       windows,
@@ -132,7 +133,7 @@
       none,
     },
     default = auto,
-	},
+  },
   cjk-font = {
     name = cjk@font,
     choices = {
@@ -147,61 +148,61 @@
   },
 }
 \xia@define@key{
-	name = {
-		default = {name},
-	},
-	name* = {
-		default = {name},
-		name = name@zh,
-	},
-	school = {
-		default = {none},
-	},
-	school* = {
-		default = {none},
-		name = school@zh,
-	},
-	school-url = {
-		default = {school-url},
-		name = school@url,
-	},
-	department = {
-		default = {none},
-	},
-	department* = {
-		default = {none},
-		name = department@zh,
-	},
-	department-url = {
-		default = {department-url},
-		name = department@url,
-	},
-	company = {
-		default = {none},
-	},
-	company* = {
-		default = {none},
-		name = company@zh,
-	},
-	company-url = {
-		default = {none},
-		name = company@url,
-	},
-	phone = {
-		default = {none},
-	},
-	email = {
-		default = {email},
-	},
-	homepage = {
-		default = {none},
-	},
-	googlescholar = {
-		default = {none},
-	},
-	linkedin = {
-		default = {none},
-	},
+  name = {
+    default = {name},
+  },
+  name* = {
+    default = {name},
+    name = name@zh,
+  },
+  school = {
+    default = {none},
+  },
+  school* = {
+    default = {none},
+    name = school@zh,
+  },
+  school-url = {
+    default = {school-url},
+    name = school@url,
+  },
+  department = {
+    default = {none},
+  },
+  department* = {
+    default = {none},
+    name = department@zh,
+  },
+  department-url = {
+    default = {department-url},
+    name = department@url,
+  },
+  company = {
+    default = {none},
+  },
+  company* = {
+    default = {none},
+    name = company@zh,
+  },
+  company-url = {
+    default = {none},
+    name = company@url,
+  },
+  phone = {
+    default = {none},
+  },
+  email = {
+    default = {email},
+  },
+  homepage = {
+    default = {none},
+  },
+  googlescholar = {
+    default = {none},
+  },
+  linkedin = {
+    default = {none},
+  },
 }
 % \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
@@ -235,18 +236,18 @@
 \markright{\xia@name}
 \thispagestyle{empty}
 \geometry{
-	paper          = a4paper,  % 210 * 297mm
-	top            = 3.0cm,
-	left           = 2.5cm,
-	right          = 2.5cm,
-	marginparwidth = 1.5cm,
-	marginparsep   = 0.5cm,
+  paper          = a4paper,  % 210 * 297mm
+  top            = 3.0cm,
+  left           = 2.5cm,
+  right          = 2.5cm,
+  marginparwidth = 1.5cm,
+  marginparsep   = 0.5cm,
 }
 \hypersetup{%
-	colorlinks     = {true},
-	urlcolor       = {black},
-	pdfauthor      = {\xia@name},
-	pdftitle       = {\xia@name},
+  colorlinks     = {true},
+  urlcolor       = {black},
+  pdfauthor      = {\xia@name},
+  pdftitle       = {\xia@name},
 }
 \sectionfont{\rmfamily\mdseries\Large}
 \subsectionfont{\rmfamily\mdseries\itshape\large}
@@ -471,111 +472,111 @@
 \xia@load@cjk@font
 \xia@option@hook{cjk-font}{\xia@load@cjk@font}
 \newcommand\xia@set@names{%
-	\ifxia@language@english
-		\def\xia@resume@education{Education}
-		\def\xia@resume@publication{Publications}
-		\def\xia@resume@internship{Internships}
-		\def\xia@resume@phone{Phone}
-		\def\xia@resume@email{Email}
-		\def\xia@resume@homepage{Homepage}
-		\def\xia@resume@googlescholar{Google Scholar}
-		\def\xia@resume@linkedin{LinkedIn}
-	\else
-		\def\xia@resume@education{教育经历}
-		\def\xia@resume@publication{发表文章}
-		\def\xia@resume@internship{实习经历}
-		\def\xia@resume@phone{电话}
-		\def\xia@resume@email{邮箱}
-		\def\xia@resume@homepage{主页}
-		\def\xia@resume@googlescholar{谷歌学术}
-		\def\xia@resume@linkedin{领英}
-	\fi
+  \ifxia@language@english
+    \def\xia@resume@education{Education}
+    \def\xia@resume@publication{Publications}
+    \def\xia@resume@experience{Experiences}
+    \def\xia@resume@phone{Phone}
+    \def\xia@resume@email{Email}
+    \def\xia@resume@homepage{Homepage}
+    \def\xia@resume@googlescholar{Google Scholar}
+    \def\xia@resume@linkedin{LinkedIn}
+  \else
+    \def\xia@resume@education{教育经历}
+    \def\xia@resume@publication{发表文章}
+    \def\xia@resume@experience{经历}
+    \def\xia@resume@phone{电话}
+    \def\xia@resume@email{邮箱}
+    \def\xia@resume@homepage{主页}
+    \def\xia@resume@googlescholar{谷歌学术}
+    \def\xia@resume@linkedin{领英}
+  \fi
 }
 \xia@set@names
 \xia@option@hook{language}{\xia@set@names}
 
 \newcommand{\info}{%
 \ifxia@language@english
-	\ifx\xia@company\xia@none
-		{\Huge \xia@name} ({\large \href{\xia@department@url}{\xia@department} @ \href{\xia@school@url}{\xia@school}})
-	\else
-		{\Huge \xia@name} ({\large \href{\xia@company@url}{\xia@company}})
-	\fi
+  \ifx\xia@company\xia@none
+    {\Huge \xia@name} ({\large \href{\xia@department@url}{\xia@department} @ \href{\xia@school@url}{\xia@school}})
+  \else
+    {\Huge \xia@name} ({\large \href{\xia@company@url}{\xia@company}})
+  \fi
 \else
-	\ifx\xia@company@zh\xia@none
-		{\Huge \xia@name@zh} ({\large \href{\xia@department@url}{\xia@department@zh} @ \href{\xia@school@url}{\xia@school@zh}})
-	\else
-		{\Huge \xia@name@zh} ({\large \href{\xia@company@url}{\xia@company@zh}})
-	\fi
+  \ifx\xia@company@zh\xia@none
+    {\Huge \xia@name@zh} ({\large \href{\xia@department@url}{\xia@department@zh} @ \href{\xia@school@url}{\xia@school@zh}})
+  \else
+    {\Huge \xia@name@zh} ({\large \href{\xia@company@url}{\xia@company@zh}})
+  \fi
 \fi
 \par
 \vspace{0.45in}
 \renewcommand\arraystretch{1.2}
 \setlength{\tabcolsep}{10.0pt}
 \begin{tabular}{ll}
-	\xia@resume@phone : & \xia@phone \\
+  \xia@resume@phone : & \xia@phone \\
   \xia@resume@email : & \href{mailto:\xia@email}{\tt \xia@email} \\
-	\ifx\xia@homepage\xia@none
-	\else
-		\xia@resume@homepage : & \href{\xia@homepage}{\tt \xia@homepage} \\
-	\fi
-	\ifx\xia@googlescholar\xia@none
-	\else
-		\xia@resume@googlescholar : & \href{\xia@googlescholar}{\tt \xia@googlescholar} \\
-	\fi
-	\ifx\xia@linkedin\xia@none
-	\else
-		\xia@resume@linkedin : & \href{\xia@linkedin}{\tt \xia@linkedin} \\
-	\fi
+  \ifx\xia@homepage\xia@none
+  \else
+    \xia@resume@homepage : & \href{\xia@homepage}{\tt \xia@homepage} \\
+  \fi
+  \ifx\xia@googlescholar\xia@none
+  \else
+    \xia@resume@googlescholar : & \href{\xia@googlescholar}{\tt \xia@googlescholar} \\
+  \fi
+  \ifx\xia@linkedin\xia@none
+  \else
+    \xia@resume@linkedin : & \href{\xia@linkedin}{\tt \xia@linkedin} \\
+  \fi
 \end{tabular}
 \vspace{2.0\baselineskip}
 }
 \newenvironment{education}{
-	\section*{\color{\xia@title@color}\xia@resume@education}
-	\ifxia@language@english
-		\vspace{-1.5\baselineskip}
-	\else
-		\vspace{-1.35\baselineskip}
-	\fi
-	\noindent\hrulefill
-	\vspace{-0.3\baselineskip}
-	\par
+  \section*{\color{\xia@title@color}\xia@resume@education}
+  \ifxia@language@english
+    \vspace{-1.5\baselineskip}
+  \else
+    \vspace{-1.35\baselineskip}
+  \fi
+  \noindent\hrulefill
+  \vspace{-0.3\baselineskip}
+  \par
 }{%
-	\par
-	\vspace{1.6\baselineskip}
+  \par
+  \vspace{1.6\baselineskip}
 }
 \newenvironment{publication}{
-	\section*{\color{\xia@title@color}\xia@resume@publication}
-	\ifxia@language@english
-		\vspace{-1.5\baselineskip}
-	\else
-		\vspace{-1.35\baselineskip}
-	\fi
-	\noindent\hrulefill
-	\par
-	\ifxia@language@english
-		$^*$ equal contribution\quad$^\dag$ corresponding author
-	\else
-		$^*$ 共一\quad$^\dag$ 通讯作者
-	\fi
-	\par
-	\vspace{-0.3\baselineskip}
+  \section*{\color{\xia@title@color}\xia@resume@publication}
+  \ifxia@language@english
+    \vspace{-1.5\baselineskip}
+  \else
+    \vspace{-1.35\baselineskip}
+  \fi
+  \noindent\hrulefill
+  \par
+  \ifxia@language@english
+    $^*$ equal contribution\quad$^\dag$ corresponding author
+  \else
+    $^*$ 共一\quad$^\dag$ 通讯作者
+  \fi
+  \par
+  \vspace{-0.3\baselineskip}
 }{%
-	\par
-	\vspace{2.0\baselineskip}
+  \par
+  \vspace{2.0\baselineskip}
 }
-\newenvironment{internship}{
-	\section*{\color{\xia@title@color}\xia@resume@internship}
-	\ifxia@language@english
-		\vspace{-1.5\baselineskip}
-	\else
-		\vspace{-1.35\baselineskip}
-	\fi
-	\noindent\hrulefill
-	\vspace{-0.6\baselineskip}
-	\par
+\newenvironment{experience}{
+  \section*{\color{\xia@title@color}\xia@resume@experience}
+  \ifxia@language@english
+    \vspace{-1.5\baselineskip}
+  \else
+    \vspace{-1.35\baselineskip}
+  \fi
+  \noindent\hrulefill
+  \vspace{-0.6\baselineskip}
+  \par
 }{%
-	\par
+  \par
 }
 \newenvironment{customitemize}{
   \begin{list}{}{
@@ -587,388 +588,425 @@
 
 % Render educations.
 \xia@define@key{
-	edu-school = {
-		default = {none},
-		name = edu@school,
-	},
-	edu-school* = {
-		default = {none},
-		name = edu@school@zh,
-	},
-	edu-location = {
-		default = {none},
-		name = edu@location,
-	},
-	edu-location* = {
-		default = {none},
-		name = edu@location@zh,
-	},
-	edu-intro = {
-		default = {none},
-		name = edu@intro,
-	},
-	edu-intro* = {
-		default = {none},
-		name = edu@intro@zh,
-	},
-	edu-detail = {
-		default = {none},
-		name = edu@detail,
-	},
-	edu-detail* = {
-		default = {none},
-		name = edu@detail@zh,
-	},
+  edu-school = {
+    default = {none},
+    name = edu@school,
+  },
+  edu-school* = {
+    default = {none},
+    name = edu@school@zh,
+  },
+  edu-time = {
+    default = {none},
+    name = edu@time,
+  },
+  edu-time* = {
+    default = {none},
+    name = edu@time@zh,
+  },
+  edu-location = {
+    default = {none},
+    name = edu@location,
+  },
+  edu-location* = {
+    default = {none},
+    name = edu@location@zh,
+  },
+  edu-intro = {
+    default = {none},
+    name = edu@intro,
+  },
+  edu-intro* = {
+    default = {none},
+    name = edu@intro@zh,
+  },
+  edu-detail = {
+    default = {none},
+    name = edu@detail,
+  },
+  edu-detail* = {
+    default = {none},
+    name = edu@detail@zh,
+  },
 }
 \newcommand\xia@empty@education{
-	\xiasetup{
-		edu-school = {none},
-		edu-school* = {none},
-		edu-location = {none},
-		edu-location* = {none},
-		edu-intro = {none},
-		edu-intro* = {none},
-		edu-detail = {none},
-		edu-detail* = {none},
-	}
+  \xiasetup{
+    edu-school = {none},
+    edu-school* = {none},
+    edu-time = {none},
+    edu-time* = {none},
+    edu-location = {none},
+    edu-location* = {none},
+    edu-intro = {none},
+    edu-intro* = {none},
+    edu-detail = {none},
+    edu-detail* = {none},
+  }
 }
 \newcommand\rendereducation{
-	\ifxia@language@english
-		\def\xia@edu@spacing{0.95}
-	\else
-		\def\xia@edu@spacing{1.05}
-	\fi
-	\begin{spacing}{\xia@edu@spacing}
-	\ifxia@language@english
-		\ifx\xia@edu@school\xia@none
-		\else
-		\begin{customitemize}
-			\item \textbf{\xia@edu@school \hfill{\xia@edu@location}}
-			\par
-			\emph{\xia@edu@intro}
-			\par
-			{\small\textcolor{gray}{\xia@edu@detail}}
-			\par
-		\end{customitemize}
-		\fi
-	\else
-		\ifx\xia@edu@school@zh\xia@none
-		\else
-		\begin{customitemize}
-			\item \textbf{\xia@edu@school@zh \hfill{\xia@edu@location@zh}}
-			\par
-			\emph{\xia@edu@intro@zh}
-			\par
-			{\small\textcolor{gray}{\xia@edu@detail@zh}}
-			\par
-		\end{customitemize}
-		\fi
-	\fi
-	\end{spacing}
-	\vspace{-0.1in}
-	\xia@empty@education
+  \ifxia@language@english
+    \def\xia@edu@spacing{0.95}
+  \else
+    \def\xia@edu@spacing{1.05}
+  \fi
+  \begin{spacing}{\xia@edu@spacing}
+  \ifxia@language@english
+    \ifx\xia@edu@school\xia@none
+    \else
+    \begin{customitemize}
+      \item \textbf{\xia@edu@school \hfill{\xia@edu@location}}
+      \par
+      \emph{\xia@edu@intro\hfill{\xia@edu@time}}
+      \par
+      \ifx\xia@edu@detail@zh\xia@none
+      \else
+        {\small\textcolor{gray}{\xia@edu@detail}}
+        \par
+      \fi
+    \end{customitemize}
+    \fi
+  \else
+    \ifx\xia@edu@school@zh\xia@none
+    \else
+    \begin{customitemize}
+      \item \textbf{\xia@edu@school@zh \hfill{\xia@edu@location@zh}}
+      \par
+      \emph{\xia@edu@intro@zh\hfill{\xia@edu@time@zh}}
+      \par
+      \ifx\xia@edu@detail@zh\xia@none
+      \else
+        {\small\textcolor{gray}{\xia@edu@detail@zh}}
+        \par
+      \fi
+    \end{customitemize}
+    \fi
+  \fi
+  \end{spacing}
+  \vspace{-0.1in}
+  \xia@empty@education
 }
 
 % Render publications.
 \xia@define@key{
-	pub-title = {
-		default = {none},
-		name = pub@title,
-	},
-	pub-status = {
-		default = {none},
-		name = pub@status,
-		choices = {
-			under,
-			none,
-		}
-	},
-	pub-location = {
-		default = {none},
-		name = pub@location,
-	},
-	pub-author-a = {
-		default = {none},
-		name = pub@author@a,
-	},
-	pub-contrib-a = {
-		default = {none},
-		name = pub@contrib@a,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-b = {
-		default = {none},
-		name = pub@author@b,
-	},
-	pub-contrib-b = {
-		default = {none},
-		name = pub@contrib@b,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-c = {
-		default = {none},
-		name = pub@author@c,
-	},
-	pub-contrib-c = {
-		default = {none},
-		name = pub@contrib@c,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-d = {
-		default = {none},
-		name = pub@author@d,
-	},
-	pub-contrib-d = {
-		default = {none},
-		name = pub@contrib@d,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-e = {
-		default = {none},
-		name = pub@author@e,
-	},
-	pub-contrib-e = {
-		default = {none},
-		name = pub@contrib@e,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-f = {
-		default = {none},
-		name = pub@author@f,
-	},
-	pub-contrib-f = {
-		default = {none},
-		name = pub@contrib@f,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-g = {
-		default = {none},
-		name = pub@author@g,
-	},
-	pub-contrib-g = {
-		default = {none},
-		name = pub@contrib@g,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-h = {
-		default = {none},
-		name = pub@author@h,
-	},
-	pub-contrib-h = {
-		default = {none},
-		name = pub@contrib@h,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-i = {
-		default = {none},
-		name = pub@author@i,
-	},
-	pub-contrib-i = {
-		default = {none},
-		name = pub@contrib@i,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
-	pub-author-j = {
-		default = {none},
-		name = pub@author@j,
-	},
-	pub-contrib-j = {
-		default = {none},
-		name = pub@contrib@j,
-		choices = {
-			equal,
-			corresponding,
-			none,
-		}
-	},
+  pub-title = {
+    default = {none},
+    name = pub@title,
+  },
+  pub-status = {
+    default = {none},
+    name = pub@status,
+    choices = {
+      under,
+      none,
+    }
+  },
+  pub-location = {
+    default = {none},
+    name = pub@location,
+  },
+  pub-author-a = {
+    default = {none},
+    name = pub@author@a,
+  },
+  pub-contrib-a = {
+    default = {none},
+    name = pub@contrib@a,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-b = {
+    default = {none},
+    name = pub@author@b,
+  },
+  pub-contrib-b = {
+    default = {none},
+    name = pub@contrib@b,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-c = {
+    default = {none},
+    name = pub@author@c,
+  },
+  pub-contrib-c = {
+    default = {none},
+    name = pub@contrib@c,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-d = {
+    default = {none},
+    name = pub@author@d,
+  },
+  pub-contrib-d = {
+    default = {none},
+    name = pub@contrib@d,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-e = {
+    default = {none},
+    name = pub@author@e,
+  },
+  pub-contrib-e = {
+    default = {none},
+    name = pub@contrib@e,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-f = {
+    default = {none},
+    name = pub@author@f,
+  },
+  pub-contrib-f = {
+    default = {none},
+    name = pub@contrib@f,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-g = {
+    default = {none},
+    name = pub@author@g,
+  },
+  pub-contrib-g = {
+    default = {none},
+    name = pub@contrib@g,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-h = {
+    default = {none},
+    name = pub@author@h,
+  },
+  pub-contrib-h = {
+    default = {none},
+    name = pub@contrib@h,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-i = {
+    default = {none},
+    name = pub@author@i,
+  },
+  pub-contrib-i = {
+    default = {none},
+    name = pub@contrib@i,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
+  pub-author-j = {
+    default = {none},
+    name = pub@author@j,
+  },
+  pub-contrib-j = {
+    default = {none},
+    name = pub@contrib@j,
+    choices = {
+      equal,
+      corresponding,
+      none,
+    }
+  },
 }
 \newcommand\xia@empty@publication{
-	\xiasetup{
-		pub-title     = {none},
-		pub-location  = {none},
-		pub-status    = {none},
-		pub-author-a  = {none},
-		pub-contrib-a = {none},
-		pub-author-b  = {none},
-		pub-contrib-b = {none},
-		pub-author-c  = {none},
-		pub-contrib-c = {none},
-		pub-author-d  = {none},
-		pub-contrib-d = {none},
-		pub-author-e  = {none},
-		pub-contrib-e = {none},
-		pub-author-f  = {none},
-		pub-contrib-f = {none},
-		pub-author-g  = {none},
-		pub-contrib-g = {none},
-		pub-author-h  = {none},
-		pub-contrib-h = {none},
-		pub-author-i  = {none},
-		pub-contrib-i = {none},
-		pub-author-j  = {none},
-		pub-contrib-j = {none},
-	}
+  \xiasetup{
+    pub-title     = {none},
+    pub-location  = {none},
+    pub-status    = {none},
+    pub-author-a  = {none},
+    pub-contrib-a = {none},
+    pub-author-b  = {none},
+    pub-contrib-b = {none},
+    pub-author-c  = {none},
+    pub-contrib-c = {none},
+    pub-author-d  = {none},
+    pub-contrib-d = {none},
+    pub-author-e  = {none},
+    pub-contrib-e = {none},
+    pub-author-f  = {none},
+    pub-contrib-f = {none},
+    pub-author-g  = {none},
+    pub-contrib-g = {none},
+    pub-author-h  = {none},
+    pub-contrib-h = {none},
+    pub-author-i  = {none},
+    pub-contrib-i = {none},
+    pub-author-j  = {none},
+    pub-contrib-j = {none},
+  }
 }
 \newcommand\xia@contrib[1]{
-	\ifx#1\xia@none
-		\hskip -5pt
-	\else
-		\ifx#1\equal
-			\hskip -2pt$^*$\hskip -3pt
-		\else
-			\hskip -2pt$^\dag$\hskip -3pt
-		\fi
-	\fi
+  \ifx#1\xia@none
+    \hskip -5pt
+  \else
+    \ifx#1\equal
+      \hskip -2pt$^*$\hskip -3pt
+    \else
+      \hskip -2pt$^\dag$\hskip -3pt
+    \fi
+  \fi
 }
 \newcommand\xia@status[1]{
-	\ifx#1\xia@none
-	\else
-		\ifxia@language@english
-			(under review)
-		\else
-			（在投）
-		\fi
-	\fi
+  \ifx#1\xia@none
+  \else
+    \ifxia@language@english
+      (under review)
+    \else
+      （在投）
+    \fi
+  \fi
 }
 \newcommand\xia@render@pub@firstauthor[2]{
-	\ifx#1\xia@none
-	\else
-		\ifx#1\xia@name
-			\hskip -4pt\textbf{\textcolor{black}{#1}\xia@contrib{#2}}
-		\else
-			\hskip -4pt\textcolor{gray}{#1\xia@contrib{#2}}
-		\fi
-	\fi
+  \ifx#1\xia@none
+  \else
+    \ifx#1\xia@name
+      \hskip -4pt\textbf{\textcolor{black}{#1}\xia@contrib{#2}}
+    \else
+      \hskip -4pt\textcolor{gray}{#1\xia@contrib{#2}}
+    \fi
+  \fi
 }
 \newcommand\xia@render@pub@author[2]{
-	\ifx#1\xia@none
-	\else
-		\ifx#1\xia@name
-			\hskip -4pt\textbf{\textcolor{gray}{, }\textcolor{black}{#1}\xia@contrib{#2}}
-		\else
-			\hskip -4pt\textcolor{gray}{, #1\xia@contrib{#2}}
-		\fi
-	\fi
+  \ifx#1\xia@none
+  \else
+    \ifx#1\xia@name
+      \hskip -4pt\textbf{\textcolor{gray}{, }\textcolor{black}{#1}\xia@contrib{#2}}
+    \else
+      \hskip -4pt\textcolor{gray}{, #1\xia@contrib{#2}}
+    \fi
+  \fi
 }
 \newcommand\renderpublication{
-	\ifx\xia@pub@title\xia@none
-	\else
-	\begin{customitemize}
-		\item {\small\textbf{\xia@pub@title}\hfill{\textbf{\xia@pub@location}\xia@status{\xia@pub@status}}}
-		\vspace{-0.04in}
-		\par
-		\footnotesize\emph{
-			\xia@render@pub@firstauthor{\xia@pub@author@a}{\xia@pub@contrib@a}
-			\xia@render@pub@author{\xia@pub@author@b}{\xia@pub@contrib@b}
-			\xia@render@pub@author{\xia@pub@author@c}{\xia@pub@contrib@c}
-			\xia@render@pub@author{\xia@pub@author@d}{\xia@pub@contrib@d}
-			\xia@render@pub@author{\xia@pub@author@e}{\xia@pub@contrib@e}
-			\xia@render@pub@author{\xia@pub@author@f}{\xia@pub@contrib@f}
-			\xia@render@pub@author{\xia@pub@author@g}{\xia@pub@contrib@g}
-			\xia@render@pub@author{\xia@pub@author@h}{\xia@pub@contrib@h}
-			\xia@render@pub@author{\xia@pub@author@i}{\xia@pub@contrib@i}
-			\xia@render@pub@author{\xia@pub@author@j}{\xia@pub@contrib@j}
-		}
-	\end{customitemize}
-	\vspace{-0.25in}
-	\xia@empty@publication
-	\fi
+  \ifx\xia@pub@title\xia@none
+  \else
+  \begin{customitemize}
+    \item {\small\textbf{\xia@pub@title}\hfill{\textbf{\xia@pub@location}\xia@status{\xia@pub@status}}}
+    \vspace{-0.04in}
+    \par
+    \footnotesize\emph{
+      \xia@render@pub@firstauthor{\xia@pub@author@a}{\xia@pub@contrib@a}
+      \xia@render@pub@author{\xia@pub@author@b}{\xia@pub@contrib@b}
+      \xia@render@pub@author{\xia@pub@author@c}{\xia@pub@contrib@c}
+      \xia@render@pub@author{\xia@pub@author@d}{\xia@pub@contrib@d}
+      \xia@render@pub@author{\xia@pub@author@e}{\xia@pub@contrib@e}
+      \xia@render@pub@author{\xia@pub@author@f}{\xia@pub@contrib@f}
+      \xia@render@pub@author{\xia@pub@author@g}{\xia@pub@contrib@g}
+      \xia@render@pub@author{\xia@pub@author@h}{\xia@pub@contrib@h}
+      \xia@render@pub@author{\xia@pub@author@i}{\xia@pub@contrib@i}
+      \xia@render@pub@author{\xia@pub@author@j}{\xia@pub@contrib@j}
+    }
+  \end{customitemize}
+  \vspace{-0.25in}
+  \xia@empty@publication
+  \fi
 }
 
-% Render internships.
+% Render experiences.
 \xia@define@key{
-	intern = {
-		default = {none},
-	},
-	intern* = {
-		default = {none},
-		name = intern@zh,
-	},
-	intern-type = {
-		default = {none},
-		name = intern@type,
-	},
-	intern-type* = {
-		default = {none},
-		name = intern@type@zh,
-	},
-	intern-time = {
-		default = {none},
-		name = intern@time,
-	},
-	intern-time* = {
-		default = {none},
-		name = intern@time@zh,
-	},
+  exp = {
+    default = {none},
+  },
+  exp* = {
+    default = {none},
+    name = exp@zh,
+  },
+  exp-type = {
+    default = {none},
+    name = exp@type,
+  },
+  exp-type* = {
+    default = {none},
+    name = exp@type@zh,
+  },
+  exp-intro = {
+    default = {none},
+    name = exp@intro,
+  },
+  exp-intro* = {
+    default = {none},
+    name = exp@intro@zh,
+  },
+  exp-time = {
+    default = {none},
+    name = exp@time,
+  },
+  exp-time* = {
+    default = {none},
+    name = exp@time@zh,
+  },
 }
-\newcommand\xia@empty@internship{
-	\xiasetup{
-		intern = {none},
-		intern* = {none},
-		intern-type = {none},
-		intern-type* = {none},
-		intern-time = {none},
-		intern-time* = {none},
-	}
+\newcommand\xia@empty@experience{
+  \xiasetup{
+    exp = {none},
+    exp* = {none},
+    exp-type = {none},
+    exp-type* = {none},
+    exp-intro = {none},
+    exp-intro* = {none},
+    exp-time = {none},
+    exp-time* = {none},
+  }
 }
-\newcommand\renderinternship{
-	\ifx\xia@intern@time@zh\xia@none
-		\let\xia@intern@time@zh\xia@intern@time
-	\fi
-	\ifxia@language@english
-		\ifx\xia@intern\xia@none
-		\else
-		\begin{customitemize}
-			\item \textbf{\xia@intern}, \xia@intern@type\hfill{\emph{\xia@intern@time}}
-			\par
-		\end{customitemize}
-		\xia@empty@internship
-		\fi
-	\else
-		\ifx\xia@intern@zh\xia@none
-		\else
-		\begin{customitemize}
-			\item \textbf{\xia@intern@zh}，\xia@intern@type@zh\hfill{\emph{\xia@intern@time@zh}}
-			\par
-		\end{customitemize}
-		\xia@empty@internship
-		\fi
-	\fi
-	\vspace{-0.2in}
+\newcommand\renderexperience{
+  \ifx\xia@exp@time@zh\xia@none
+    \let\xia@exp@time@zh\xia@exp@time
+  \fi
+  \ifxia@language@english
+    \ifx\xia@exp\xia@none
+    \else
+    \begin{customitemize}
+      \item \textbf{\xia@exp}, \xia@exp@type\hfill{\emph{\xia@exp@time}}
+      \par
+      \ifx\xia@exp@intro\xia@none
+      \else
+        \vspace{-0.08in}
+        {\small\textcolor{gray}{\xia@exp@intro}}
+        \par
+      \fi
+    \end{customitemize}
+    \fi
+  \else
+    \ifx\xia@exp@zh\xia@none
+    \else
+    \begin{customitemize}
+      \item \textbf{\xia@exp@zh}，\xia@exp@type@zh\hfill{\emph{\xia@exp@time@zh}}
+      \par
+      \ifx\xia@exp@intro@zh\xia@none
+      \else
+        \vspace{-0.08in}
+        {\small\textcolor{gray}{\xia@exp@intro@zh}}
+        \par
+      \fi
+    \end{customitemize}
+    \fi
+  \fi
+  \xia@empty@experience
+  \vspace{-0.2in}
 }

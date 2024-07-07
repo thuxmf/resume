@@ -1,0 +1,21 @@
+# Experiences.
+experience:
+    # First experience.
+    - exp1:
+        exp: Experience company in English
+        exp*: Experience company in Chinese
+        exp-type: Experience type in English
+        exp-type*: Experience type in Chinese
+        exp-intro: Experience intro in English, omit if delete
+        exp-intro*: Experience intro in Chinese, omit if delete
+        exp-time: Experience period in English
+        exp-time*: Experience period in Chinese
+
+    # Second experience.
+    - exp2:
+        exp: Experience company in English
+        exp*: Experience company in Chinese
+        exp-type: Experience type in English
+        exp-type*: Experience type in Chinese
+        exp-time: Experience period in English
+        exp-time*: Experience period in Chinese

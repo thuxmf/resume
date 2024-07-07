@@ -1,12 +1,14 @@
 # Resume Template
 
+[![GitHub release](https://img.shields.io/github/v/release/thuxmf/resume)](https://github.com/thuxmf/resume/releases/latest)
+
 This package establishes a simple and easy-to-use LaTeX template for resume.
 
 ## Getting Started
 
 ### Dependencies
 
-- LaTex: The compilation is based on both XeLaTex and LaTeXmk, please install TeX in advance.
+- LaTeX: The compilation is based on both XeLaTeX and LaTeXmk, please install TeX in advance.
 - Python3: One needs to use Python3 to generate necessary `tex` files. To install the dependencies, please use
 
     ```shell
@@ -16,7 +18,7 @@ This package establishes a simple and easy-to-use LaTeX template for resume.
 
 ### Updating Data
 
-All data (*e.g.*, personal information, education, publication, internship) is separately recorded in `yml` format under [raw_data](raw_data). Please follow the following instructions, which provides a detailed explanations.
+All data (*e.g.*, personal information, education, publications, experiences) is separately recorded in `yml` format under [raw_data](raw_data). Please follow the following instructions, which provides a detailed explanations.
 
 #### [info.yml](raw_data/info.yml)
 
@@ -48,23 +50,27 @@ education:
     - edu1:
         edu-school: School in English
         edu-school*: School in Chinese
+        edu-time: School period in English
+        edu-time*: School period in Chinese
         edu-location: School location in English
         edu-location*: School location in Chinese
         edu-intro: Brief intro in English, e.g., GPA, advisor, period
         edu-intro*: Brief intro in Chinese
-        edu-detail: Detailed information in English, e.g., courses
-        edu-detail*: Detailed information in Chinese
+        edu-detail: Detailed information in English, e.g., courses, omit if delete
+        edu-detail*: Detailed information in Chinese, omit if delete
 
     # Second education.
     - edu2:
         edu-school: School in English
         edu-school*: School in Chinese
+        edu-time: School period in English
+        edu-time*: School period in Chinese
         edu-location: School location in English
         edu-location*: School location in Chinese
         edu-intro: Brief intro in English, e.g., GPA, advisor, period
         edu-intro*: Brief intro in Chinese
-        edu-detail: Detailed information in English, e.g., courses
-        edu-detail*: Detailed information in Chinese
+        edu-detail: Detailed information in English, e.g., courses, omit if delete
+        edu-detail*: Detailed information in Chinese, omit if delete
 ```
 
 #### [publication.md](raw_data/education.md) and [publication](raw_data/publication)
@@ -99,22 +105,31 @@ For [publication.md](raw_data/education.md), one needs to record publications as
 <!-- - [paper_abbr3](publication/paper_abbr3.yml) -->
 ```
 
-#### [internship.yml](raw_data/internship.yml)
+#### [experience.yml](raw_data/experience.yml)
 
 ```yml
-internship:
-    - intern1:
-        intern: Intern company in English
-        intern*: Intern company in Chinese
-        intern-type: Intern type in English
-        intern-type*: Intern type in Chinese
-        intern-time: Intern period
-    - intern2:
-        intern: Intern company in English
-        intern*: Intern company in Chinese
-        intern-type: Intern type in English
-        intern-type*: Intern type in Chinese
-        intern-time: Intern period
+experience:
+    # First experience.
+    - exp1:
+        exp: Experience company in English
+        exp*: Experience company in Chinese
+        exp-type: Experience type in English
+        exp-type*: Experience type in Chinese
+        exp-intro: Experience intro in English, omit if delete
+        exp-intro*: Experience intro in Chinese, omit if delete
+        exp-time: Experience period in English
+        exp-time*: Experience period in Chinese
+
+    # Second experience.
+    - exp2:
+        exp: Experience company in English
+        exp*: Experience company in Chinese
+        exp-type: Experience type in English
+        exp-type*: Experience type in Chinese
+        exp-intro: Experience intro in English, omit if delete
+        exp-intro*: Experience intro in Chinese, omit if delete
+        exp-time: Experience period in English
+        exp-time*: Experience period in Chinese
 ```
 
 ### Compilation Instructions
@@ -136,9 +151,11 @@ make [{data|data-chinese|resume|rebuild|rebuild-chinese|clean|cleandata|cleanall
 
 ## Customization
 
-Please feel free to add more items to your resume (*e.g.*, experiences, academic services). In order to do so, one needs to implement the **render commands** in [resume_xia.cls](resume_xia.cls), the **data parser** in [generate_data.py](generate_data.py), and the **data structures** in [data.yml](data.yml). It is recommended to follow the implementation of the existing functionality.
+Please feel free to add more items to your resume (*e.g.*, awards, academic services). In order to do so, one needs to implement the **render commands** in [resume_xia.cls](resume_xia.cls), the **data parser** in [generate_data.py](generate_data.py), and the **data structures** under [raw_data](raw_data). It is recommended to follow the implementation of the existing functionality.
 
 ## TODOList
 
 - [x] Improve the Chinese version.
 - [x] Update the font.
+- [ ] Support different styles of resume.
+- [x] Refine the structure.

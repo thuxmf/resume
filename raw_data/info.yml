@@ -1,4 +1,4 @@
-# Personal information
+# Personal information.
 info:
     name: Name in English
     name*: Name in Chinese
@@ -13,6 +13,6 @@ info:
     homepage: Homepage, omit if delete
     googlescholar: Google Scholar page, omit if delete
     linkedin: LinkedIn page, omit if delete
-    company: Company in English
-    company*: Company in Chinese
+    company: Company in English, omit and use `school` if delete
+    company*: Company in Chinese, omit and use `school*` if delete
     company-url: Company website

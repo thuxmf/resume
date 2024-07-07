@@ -1,6 +1,6 @@
 # python3.8
-# Generate all tex file for the resume, including info, education, publication,
-# and internship.
+# Generate all tex file for the resume, including info, education,
+# publications, and experiences.
 import os
 import argparse
 
@@ -12,7 +12,7 @@ BASE_DIR = 'raw_data/'
 INFO_PATH = 'raw_data/info.yml'
 EDU_PATH = 'raw_data/education.yml'
 PUB_PATH = 'raw_data/publication.md'
-INTERN_PATH = 'raw_data/internship.yml'
+EXP_PATH = 'raw_data/experience.yml'
 
 _ALLOWED_LANGUAGES = ['chinese', 'english']
 
@@ -51,7 +51,7 @@ def generate_info(args):
     msg += f'  language = {{{language}}},\n'
     msg += '}\n'
 
-    info_path = 'xiasetup.tex'
+    info_path = os.path.join('data', 'xiasetup.tex')
     with open(info_path, 'w') as f:
         f.write(msg)
 
@@ -123,25 +123,25 @@ def generate_publication():
         f.write(msg)
 
 
-def generate_internship():
-    """Generate tex file for internship."""
-    with open(INTERN_PATH, 'r') as f:
+def generate_experience():
+    """Generate tex file for experience."""
+    with open(EXP_PATH, 'r') as f:
         config = EasyDict(yaml.load(f.read(), Loader=yaml.FullLoader))
-        intern_config = config.internship
-    msg = '\\begin{internship}\n\n\n'
-    for raw_idx, raw_intern in enumerate(intern_config):
+        exp_config = config.experience
+    msg = '\\begin{experience}\n\n\n'
+    for raw_idx, raw_exp in enumerate(exp_config):
         idx = raw_idx + 1
-        msg += f'% {process_idx(idx)} internship.\n'
+        msg += f'% {process_idx(idx)} experience.\n'
         msg += '\\xiasetup{%\n'
-        intern = raw_intern[f'intern{idx}']
-        for key, val in intern.items():
+        exp = raw_exp[f'exp{idx}']
+        for key, val in exp.items():
             msg += f'  {key} = {{{val}}},\n'
         msg += '}\n'
-        msg += '\\renderinternship\n\n\n'
-    msg += '\\end{internship}\n'
+        msg += '\\renderexperience\n\n\n'
+    msg += '\\end{experience}\n'
 
-    intern_path = os.path.join('data', 'internship.tex')
-    with open(intern_path, 'w') as f:
+    exp_path = os.path.join('data', 'experience.tex')
+    with open(exp_path, 'w') as f:
         f.write(msg)
 
 
@@ -151,7 +151,7 @@ def main():
     generate_info(args)
     generate_education()
     generate_publication()
-    generate_internship()
+    generate_experience()
 
 
 if __name__ == '__main__':
