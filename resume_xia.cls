@@ -1,8 +1,8 @@
 % Copyright (C) by Mengfei Xia <xiamengfei0409@gmail.com>
-% 07/07/2024 v0.0
+% 07/07/2024 v0.1
 
 \ProvidesClass{resume_xia}
-[07/07/2024 v0.0 Resume Template File @ Mengfei Xia]
+[07/07/2024 v0.1 Resume Template File @ Mengfei Xia]
 \newcommand\xia@error[1]{%
   \ClassError{resume_xia}{#1}{}%
 }
@@ -18,7 +18,7 @@
     TeX Live 2017 or later version is required to compile this document%
   }
 }
-\def\version{0.0}
+\def\version{0.1}
 \def\xia@none{none}
 \def\xia@none@zh{none}
 \def\equal{equal}
