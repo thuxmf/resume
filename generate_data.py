@@ -30,11 +30,11 @@ def parse_args():
 
 def process_idx(idx):
     """Process the index."""
-    if idx % 10 == 1:
+    if idx % 10 == 1 and idx != 11:
         return f'{idx}st'
-    elif idx % 10 == 2:
+    elif idx % 10 == 2 and idx != 12:
         return f'{idx}nd'
-    elif idx % 10 == 3:
+    elif idx % 10 == 3 and idx != 13:
         return f'{idx}rd'
     return f'{idx}th'
 
