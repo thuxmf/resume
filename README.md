@@ -273,3 +273,7 @@ It is recommended to follow the implementation of the existing functionality.
 ## TODOList
 
 - [ ] Add more style files.
+
+## Acknowledgements
+
+We sincerely appreciate <a href="https://github.com/shenyujun">Yujun Shen</a></span> for offering his own resume, allowing diverse style files.
