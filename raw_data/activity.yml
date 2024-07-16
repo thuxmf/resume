@@ -1,0 +1,15 @@
+# Activity.
+activity:
+    # First activity.
+    - act1:
+        act: Activity in English
+        act*: Activity in Chinese
+        act-explanation: Explanation in English
+        act-explanation*: Explanation in Chinese
+
+    # Second activity.
+    - act2:
+        act: Activity in English
+        act*: Activity in Chinese
+        act-explanation: Explanation in English
+        act-explanation*: Explanation in Chinese

@@ -1,26 +1,65 @@
 % Copyright (C) by Mengfei Xia <xiamengfei0409@gmail.com>
-% 07/08/2024 v1.0
+% 07/17/2024 v1.1
 
-\ProvidesClass{styles/xia}
-[07/08/2024 v1.0 Resume Template File @ Mengfei Xia]
+\ProvidesClass{styles/mengfei_xia}
+[07/17/2024 v1.1 Resume Template File @ Mengfei Xia]
 \NeedsTeXFormat{LaTeX2e}
 \@ifl@t@r\fmtversion{2017/04/15}{}{
   \xia@error{%
     TeX Live 2017 or later version is required to compile this document%
   }
 }
+% Customize the packages.
+\RequirePackage{geometry}
+\RequirePackage{bookmark}
+\RequirePackage[sc,osf]{mathpazo}
+\RequirePackage{sectsty}
+\RequirePackage[square,sort,comma,numbers]{natbib}
+\RequirePackage{setspace}
+\RequirePackage{url}
+\RequirePackage{xcolor}
+% \makeatletter\let\saved@bibitem\@bibitem\makeatother
+\RequirePackage{hyperref}
+% \makeatletter\let\@bibitem\saved@bibitem\makeatother
+\RequirePackage{threeparttable}
+\RequirePackage{tabularray}
+
+% Page setups.
+\pagestyle{myheadings}
+\markright{\xia@name}
+\thispagestyle{empty}
+\geometry{
+  paper          = a4paper,  % 210 * 297mm
+  top            = 1.0cm,
+  left           = 1.0cm,
+  right          = 1.0cm,
+  marginparwidth = 1.5cm,
+  marginparsep   = 0.5cm,
+}
+\hypersetup{%
+  colorlinks     = {true},
+  urlcolor       = {black},
+  pdfauthor      = {\xia@name},
+  pdftitle       = {\xia@name},
+}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+\setlength\parindent{0em}
 
 % Define names.
 \newcommand\xia@set@names{%
   \ifxia@language@english
-    \def\xia@resume@education{Education}
+    \def\xia@resume@education{Educations}
     \def\xia@resume@publication{Publications}
     \def\xia@resume@experience{Experiences}
-    \def\xia@resume@phone{Phone}
+    \def\xia@resume@phone{Mobile}
     \def\xia@resume@email{Email}
     \def\xia@resume@homepage{Homepage}
     \def\xia@resume@googlescholar{Google Scholar}
     \def\xia@resume@linkedin{LinkedIn}
+    \def\xia@resume@activity{Professional Activities}
+    \def\xia@resume@honor{Honors and Awards}
+    \def\xia@resume@skill{Skills and Others}
   \else
     \def\xia@resume@education{教育经历}
     \def\xia@resume@publication{发表文章}
@@ -30,6 +69,9 @@
     \def\xia@resume@homepage{主页}
     \def\xia@resume@googlescholar{谷歌学术}
     \def\xia@resume@linkedin{领英}
+    \def\xia@resume@activity{学术活动}
+    \def\xia@resume@honor{获奖情况}
+    \def\xia@resume@skill{其他技能}
   \fi
 }
 \xia@set@names
@@ -51,7 +93,7 @@
   \fi
 \fi
 \par
-\vspace{0.45in}
+\vspace{0.25in}
 \renewcommand\arraystretch{1.2}
 \setlength{\tabcolsep}{10.0pt}
 \begin{tabular}{ll}
@@ -70,7 +112,7 @@
     \xia@resume@linkedin : & \href{\xia@linkedin}{\tt \xia@linkedin} \\
   \fi
 \end{tabular}
-\vspace{2.0\baselineskip}
+\vspace{1.5\baselineskip}
 }
 
 % Define environments.
@@ -86,7 +128,7 @@
   \par
 }{%
   \par
-  \vspace{1.6\baselineskip}
+  \vspace{1.1\baselineskip}
 }
 \newenvironment{publication}{
   \section*{\color{\xia@title@color}\xia@resume@publication}
@@ -106,7 +148,7 @@
   \vspace{-0.3\baselineskip}
 }{%
   \par
-  \vspace{2.0\baselineskip}
+  \vspace{1.5\baselineskip}
 }
 \newenvironment{experience}{
   \section*{\color{\xia@title@color}\xia@resume@experience}
@@ -120,6 +162,50 @@
   \par
 }{%
   \par
+  \vspace{1.5\baselineskip}
+}
+\newenvironment{activity}{
+  \section*{\color{\xia@title@color}\xia@resume@activity}
+  \ifxia@language@english
+    \vspace{-1.5\baselineskip}
+  \else
+    \vspace{-1.35\baselineskip}
+  \fi
+  \noindent\hrulefill
+  \vspace{-0.6\baselineskip}
+  \par
+}{%
+  \par
+  \vspace{1.5\baselineskip}
+}
+\newenvironment{honor}{
+  \section*{\color{\xia@title@color}\xia@resume@honor}
+  \ifxia@language@english
+    \vspace{-1.5\baselineskip}
+  \else
+    \vspace{-1.35\baselineskip}
+  \fi
+  \noindent\hrulefill
+  \vspace{-0.6\baselineskip}
+  \par
+}{%
+  \par
+  \vspace{1.5\baselineskip}
+}
+\newenvironment{skill}{
+  \section*{\color{\xia@title@color}\xia@resume@skill}
+  \ifxia@language@english
+    \vspace{-1.5\baselineskip}
+  \else
+    \vspace{-1.35\baselineskip}
+  \fi
+  \noindent\hrulefill
+  \par
+  \begin{tabular}{@{}l@{\extracolsep{\fill}}r@{}}
+}{%
+  \end{tabular}
+  \par
+  \vspace{1.5\baselineskip}
 }
 
 % Customized itemize.
@@ -190,10 +276,14 @@
 \newcommand\xia@status[1]{
   \ifx#1\xia@none
   \else
-    \ifxia@language@english
+    \ifx#1\under
       (under review)
-    \else
-      （在投）
+    \fi
+    \ifx#1\oral
+      oral
+    \fi
+    \ifx#1\spotlight
+      spotlight
     \fi
   \fi
 }
@@ -251,7 +341,10 @@
     \ifx\xia@exp\xia@none
     \else
     \begin{customitemize}
-      \item \textbf{\xia@exp}, \xia@exp@type\hfill{\emph{\xia@exp@time}}
+      \item \textbf{\xia@exp}\hfill{\emph{\xia@exp@time}}
+      \par
+      \vspace{-0.08in}
+      {\small\xia@exp@type\hfill\xia@exp@location}
       \par
       \ifx\xia@exp@intro\xia@none
       \else
@@ -265,7 +358,10 @@
     \ifx\xia@exp@zh\xia@none
     \else
     \begin{customitemize}
-      \item \textbf{\xia@exp@zh}，\xia@exp@type@zh\hfill{\emph{\xia@exp@time@zh}}
+      \item \textbf{\xia@exp@zh}\hfill{\emph{\xia@exp@time@zh}}
+      \par
+      \vspace{-0.08in}
+      {\small\xia@exp@type@zh\hfill\xia@exp@location@zh}
       \par
       \ifx\xia@exp@intro@zh\xia@none
       \else
@@ -277,5 +373,65 @@
     \fi
   \fi
   \xia@empty@experience
+  \vspace{-0.20in}
+}
+
+% Render activities.
+\newcommand\renderactivity{
+  \ifxia@language@english
+    \ifx\xia@act\xia@none
+    \else
+      \begin{customitemize}
+        \item \textbf{\xia@act :} \xia@act@explanation
+      \end{customitemize}
+    \fi
+  \else
+    \ifx\xia@act@zh\xia@none
+    \else
+      \begin{customitemize}
+        \item \textbf{\xia@act@zh：}\xia@act@explanation@zh
+      \end{customitemize}
+    \fi
+  \fi
+  \xia@empty@activity
   \vspace{-0.2in}
+}
+
+% Render honors.
+\newcommand\renderhonor{
+  \ifxia@language@english
+    \ifx\xia@honor\xia@none
+    \else
+      \begin{customitemize}
+        \item \textbf{\xia@honor}, \xia@honor@affiliation, \xia@honor@time
+      \end{customitemize}
+    \fi
+  \else
+    \ifx\xia@honor@zh\xia@none
+    \else
+      \begin{customitemize}
+        \item \textbf{\xia@honor@zh}，\xia@honor@affiliation@zh，\xia@honor@time@zh
+      \end{customitemize}
+    \fi
+  \fi
+  \xia@empty@honor
+  \vspace{-0.2in}
+}
+
+% Render skills.
+\newcommand\tabitem{\textbullet~~}
+\newcommand\renderskill[1]{
+  \ifxia@language@english
+    \ifthenelse{\equal{#1}{\le}}{%
+      \tabitem \begin{minipage}[b]{0.5\linewidth}\textbf{\xia@skill :} \xia@skill@intro\end{minipage} &
+    }{%
+      \hfill \tabitem \begin{minipage}[b]{0.5\linewidth}\textbf{\xia@skill :} \xia@skill@intro\end{minipage} \\
+    }
+  \else
+    \ifthenelse{\equal{#1}{\le}}{%
+      \tabitem \begin{minipage}[b]{0.5\linewidth}\textbf{\xia@skill@zh：} \xia@skill@intro@zh\end{minipage} &
+    }{%
+      \hfill \tabitem \begin{minipage}[b]{0.5\linewidth}\textbf{\xia@skill@zh：} \xia@skill@intro@zh\end{minipage} \\
+    }
+  \fi
 }

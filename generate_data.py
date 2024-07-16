@@ -13,6 +13,9 @@ INFO_PATH = 'raw_data/info.yml'
 EDU_PATH = 'raw_data/education.yml'
 PUB_PATH = 'raw_data/publication.md'
 EXP_PATH = 'raw_data/experience.yml'
+ACT_PATH = 'raw_data/activity.yml'
+HONOR_PATH = 'raw_data/honor.yml'
+SKILL_PATH = 'raw_data/skill.yml'
 STYLE_DIR = 'styles'
 
 _ALLOWED_LANGUAGES = ['chinese', 'english']
@@ -30,11 +33,11 @@ def parse_args():
 
 def process_idx(idx):
     """Process the index."""
-    if idx % 10 == 1:
+    if idx % 10 == 1 and idx != 11:
         return f'{idx}st'
-    elif idx % 10 == 2:
+    elif idx % 10 == 2 and idx != 12:
         return f'{idx}nd'
-    elif idx % 10 == 3:
+    elif idx % 10 == 3 and idx != 13:
         return f'{idx}rd'
     return f'{idx}th'
 
@@ -141,8 +144,8 @@ def generate_publication():
         msg += '\\renderpublication\n\n\n'
     msg += '\\end{publication}\n'
 
-    edu_path = os.path.join('data', 'publication.tex')
-    with open(edu_path, 'w') as f:
+    pub_path = os.path.join('data', 'publication.tex')
+    with open(pub_path, 'w') as f:
         f.write(msg)
 
 
@@ -168,6 +171,73 @@ def generate_experience():
         f.write(msg)
 
 
+def generate_activity():
+    """Generate tex file for activity."""
+    with open(ACT_PATH, 'r') as f:
+        config = EasyDict(yaml.load(f.read(), Loader=yaml.FullLoader))
+        act_config = config.activity
+    msg = '\\begin{activity}\n\n\n'
+    for raw_idx, raw_act in enumerate(act_config):
+        idx = raw_idx + 1
+        msg += f'% {process_idx(idx)} activity.\n'
+        msg += '\\xiasetup{%\n'
+        act = raw_act[f'act{idx}']
+        for key, val in act.items():
+            msg += f'  {key} = {{{val}}},\n'
+        msg += '}\n'
+        msg += '\\renderactivity\n\n\n'
+    msg += '\\end{activity}\n'
+
+    act_path = os.path.join('data', 'activity.tex')
+    with open(act_path, 'w') as f:
+        f.write(msg)
+
+
+def generate_honor():
+    """Generate tex file for honor."""
+    with open(HONOR_PATH, 'r') as f:
+        config = EasyDict(yaml.load(f.read(), Loader=yaml.FullLoader))
+        honor_config = config.honor
+    msg = '\\begin{honor}\n\n\n'
+    for raw_idx, raw_honor in enumerate(honor_config):
+        idx = raw_idx + 1
+        msg += f'% {process_idx(idx)} honor.\n'
+        msg += '\\xiasetup{%\n'
+        honor = raw_honor[f'honor{idx}']
+        for key, val in honor.items():
+            msg += f'  {key} = {{{val}}},\n'
+        msg += '}\n'
+        msg += '\\renderhonor\n\n\n'
+    msg += '\\end{honor}\n'
+
+    honor_path = os.path.join('data', 'honor.tex')
+    with open(honor_path, 'w') as f:
+        f.write(msg)
+
+
+def generate_skill():
+    """Generate tex file for skill."""
+    with open(SKILL_PATH, 'r') as f:
+        config = EasyDict(yaml.load(f.read(), Loader=yaml.FullLoader))
+        skill_config = config.skill
+    msg = '\\begin{skill}\n\n\n'
+    for raw_idx, raw_skill in enumerate(skill_config):
+        idx = raw_idx + 1
+        msg += f'% {process_idx(idx)} skill.\n'
+        msg += '\\xiasetup{%\n'
+        skill = raw_skill[f'skill{idx}']
+        for key, val in skill.items():
+            msg += f'  {key} = {{{val}}},\n'
+        msg += '}\n'
+        left_flag = 'right' if raw_idx % 2 else 'left'
+        msg += f'\\renderskill{{{left_flag}}}\n\n\n'
+    msg += '\\end{skill}\n'
+
+    skill_path = os.path.join('data', 'skill.tex')
+    with open(skill_path, 'w') as f:
+        f.write(msg)
+
+
 def main():
     """Main function."""
     args = parse_args()
@@ -176,6 +246,9 @@ def main():
     generate_education()
     generate_publication()
     generate_experience()
+    generate_activity()
+    generate_honor()
+    generate_skill()
 
 
 if __name__ == '__main__':

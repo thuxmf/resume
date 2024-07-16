@@ -85,7 +85,7 @@ For each `yml` file, current version only supports **UP TO 10** authors. One can
 paper_abbr:
     pub-title: Title
     pub-location: Conference name or journal name
-    pub-status: set `under` for under review, otherwise delete or set to `none`
+    pub-status: set `under` for under review, `oral` for oral, `spotlight` for spotlight, and otherwise delete or set to `none`
     pub-author-a: First author
     pub-contrib-a: equal
     pub-author-b: Second author
@@ -103,6 +103,7 @@ For [publication.md](raw_data/education.md), one needs to record publications as
 - [paper_abbr1](publication/paper_abbr1.yml)
 - [paper_abbr2](publication/paper_abbr2.yml)
 <!-- - [paper_abbr3](publication/paper_abbr3.yml) -->
+- [paper_abbr4](publication/paper_abbr4.yml)
 ```
 
 #### [experience.yml](raw_data/experience.yml)
@@ -115,6 +116,8 @@ experience:
         exp*: Experience company in Chinese
         exp-type: Experience type in English
         exp-type*: Experience type in Chinese
+        exp-location: Experience location in English
+        exp-location*: Experience location in Chinese
         exp-intro: Experience intro in English, omit if delete
         exp-intro*: Experience intro in Chinese, omit if delete
         exp-time: Experience period in English
@@ -126,26 +129,106 @@ experience:
         exp*: Experience company in Chinese
         exp-type: Experience type in English
         exp-type*: Experience type in Chinese
+        exp-location: Experience location in English
+        exp-location*: Experience location in Chinese
         exp-intro: Experience intro in English, omit if delete
         exp-intro*: Experience intro in Chinese, omit if delete
         exp-time: Experience period in English
         exp-time*: Experience period in Chinese
 ```
 
+#### [activity.yml](raw_data/activity.yml)
+
+```yml
+activity:
+    # First activity.
+    - act1:
+        act: Activity in English
+        act*: Activity in Chinese
+        act-explanation: Explanation in English
+        act-explanation*: Explanation in Chinese
+
+    # Second activity.
+    - act2:
+        act: Activity in English
+        act*: Activity in Chinese
+        act-explanation: Explanation in English
+        act-explanation*: Explanation in Chinese
+```
+
+#### [honor.yml](raw_data/honor.yml)
+
+```yml
+honor:
+    # First honor.
+    - honor1:
+        honor: Honor in English
+        honor*: Honor in Chinese
+        honor-affiliation: Affiliation in English
+        honor-affiliation*: Affiliation in Chinese
+        honor-time: Time in English
+        honor-time*: Time in Chinese
+
+    # Second honor.
+    - honor2:
+        honor: Honor in English
+        honor*: Honor in Chinese
+        honor-affiliation: Affiliation in English
+        honor-affiliation*: Affiliation in Chinese
+        honor-time: Time in English
+        honor-time*: Time in Chinese
+```
+
+#### [skill.yml](raw_data/skill.yml)
+
+```yml
+skill:
+    # First skill.
+    - skill1:
+        skill: Skill in English
+        skill*: Skill in Chinese
+        skill-intro: Brief intro in English
+        skill-intro*: Brief intro in Chinese
+
+    # Second skill.
+    - skill2:
+        skill: Skill in English
+        skill*: Skill in Chinese
+        skill-intro: Brief intro in English
+        skill-intro*: Brief intro in Chinese
+
+    # Third skill.
+    - skill3:
+        skill: Skill in English
+        skill*: Skill in Chinese
+        skill-intro: Brief intro in English
+        skill-intro*: Brief intro in Chinese
+
+    # Fourth skill.
+    - skill4:
+        skill: Skill in English
+        skill*: Skill in Chinese
+        skill-intro: Brief intro in English
+        skill-intro*: Brief intro in Chinese
+```
+
 ### Style Files
 
 To better customize the resume, one can choose a style file under [styles](styles) simply by passing the filename of the `sty` file, which is implemented by importing the `sty` file via `\usepackage` command.
 
-Concretely, please set the `STYLE_FILE` argument through Makefile, in which the default value is `xia.sty`.
+Concretely, please set the `STYLE_FILE` argument through Makefile, in which the default value is `mengfei_xia.sty`.
 
 ```shell
-# Default usage to generate `tex` files in English, which will load `xia.sty`.
+# Default usage to generate `tex` files in English, which will load `mengfei_xia.sty`.
 make data
+
 # Generates `tex` files in Chinese by loading `name.sty`.
 make data-chinese STYLE_FILE=name.sty
+
 # Re-compile the resume in English by loading `name.sty`.
 make rebuild STYLE_FILE=name.sty
-# Default usage to re-compile the resume in Chinese, which will load `xia.sty`.
+
+# Default usage to re-compile the resume in Chinese, which will load `mengfei_xia.sty`.
 make rebuild-chinese
 ```
 
@@ -179,7 +262,7 @@ It is encouraged to design your own style file based on the following steps:
 
 ### Adding New Contents
 
-Please feel free to add more contents to your resume (*e.g.*, awards, academic services). In order to do so, one needs to:
+Please feel free to add more contents to your resume. In order to do so, one needs to:
 
 1. Define the **namespace and empty function** in [resume_xia.cls](resume_xia.cls);
 2. Implement the **data parser** in [generate_data.py](generate_data.py);
@@ -189,8 +272,4 @@ It is recommended to follow the implementation of the existing functionality.
 
 ## TODOList
 
-- [x] Improve the Chinese version.
-- [x] Update the font.
-- [x] Support different styles of resume.
-- [x] Refine the structure.
 - [ ] Add more style files.

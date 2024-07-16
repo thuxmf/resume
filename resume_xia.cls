@@ -1,8 +1,8 @@
 % Copyright (C) by Mengfei Xia <xiamengfei0409@gmail.com>
-% 07/07/2024 v1.0
+% 07/17/2024 v1.1
 
 \ProvidesClass{resume_xia}
-[07/07/2024 v1.0 Resume Template File @ Mengfei Xia]
+[07/17/2024 v1.1 Resume Template File @ Mengfei Xia]
 \newcommand\xia@error[1]{%
   \ClassError{resume_xia}{#1}{}%
 }
@@ -18,12 +18,16 @@
     TeX Live 2017 or later version is required to compile this document%
   }
 }
-\def\version{1.0}
+\def\version{1.1}
 \def\xia@none{none}
 \def\xia@none@zh{none}
 \def\equal{equal}
 \def\corresponding{corresponding}
 \def\under{under}
+\def\oral{oral}
+\def\spotlight{spotlight}
+\def\le{left}
+\def\ri{right}
 
 % Global settings.
 \RequirePackage{kvdefinekeys}
@@ -209,49 +213,13 @@
 \ProcessKeyvalOptions*
 \ProcessOptions\relax
 \PassOptionsToPackage{quiet}{fontspec}
-% \LoadClass[a4paper]{article}
-\LoadClass[a4paper,UTF8,fontset=none]{ctexart}
 
-% Customize the packages.
-\RequirePackage{geometry}
-\RequirePackage{bookmark}
+\LoadClass[a4paper,UTF8,fontset=none]{ctexart}
 \RequirePackage{xeCJK}
 \RequirePackage{xeCJKfntef}
 \RequirePackage{fontspec}
-\RequirePackage{xcolor}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[sc,osf]{mathpazo}
-\RequirePackage{sectsty}
-\RequirePackage[square,sort,comma,numbers]{natbib}
-\RequirePackage{setspace}
-\RequirePackage{url}
-% \makeatletter\let\saved@bibitem\@bibitem\makeatother
-\RequirePackage{hyperref}
-% \makeatletter\let\@bibitem\saved@bibitem\makeatother
-\RequirePackage{threeparttable}
-\RequirePackage{tabularray}
-
-% Page setups.
-\pagestyle{myheadings}
-\markright{\xia@name}
-\thispagestyle{empty}
-\geometry{
-  paper          = a4paper,  % 210 * 297mm
-  top            = 3.0cm,
-  left           = 2.5cm,
-  right          = 2.5cm,
-  marginparwidth = 1.5cm,
-  marginparsep   = 0.5cm,
-}
-\hypersetup{%
-  colorlinks     = {true},
-  urlcolor       = {black},
-  pdfauthor      = {\xia@name},
-  pdftitle       = {\xia@name},
-}
-\sectionfont{\rmfamily\mdseries\Large}
-\subsectionfont{\rmfamily\mdseries\itshape\large}
-\setlength\parindent{0em}
+\RequirePackage{pdfpages}
 
 % Language settings.
 \ifxia@fontset@mac
@@ -542,6 +510,8 @@
     choices = {
       under,
       none,
+      oral,
+      spotlight,
     }
   },
   pub-location = {
@@ -724,6 +694,14 @@
     default = {none},
     name = exp@type@zh,
   },
+  exp-location = {
+    default = {none},
+    name = exp@location,
+  },
+  exp-location* = {
+    default = {none},
+    name = exp@location@zh,
+  },
   exp-intro = {
     default = {none},
     name = exp@intro,
@@ -747,9 +725,102 @@
     exp* = {none},
     exp-type = {none},
     exp-type* = {none},
+    exp-location = {none},
+    exp-location* = {none},
     exp-intro = {none},
     exp-intro* = {none},
     exp-time = {none},
     exp-time* = {none},
+  }
+}
+
+% Namespace to render activities.
+\xia@define@key{
+  act = {
+    default = {none},
+  },
+  act* = {
+    default = {none},
+    name = act@zh,
+  },
+  act-explanation = {
+    default = {none},
+    name = act@explanation,
+  },
+  act-explanation* = {
+    default = {none},
+    name = act@explanation@zh,
+  },
+}
+\newcommand\xia@empty@activity{
+  \xiasetup{
+    act = {none},
+    act* = {none},
+    act-explanation = {none},
+    act-explanation* = {none},
+  }
+}
+
+% Namespace to render honors.
+\xia@define@key{
+  honor = {
+    default = {none},
+  },
+  honor* = {
+    default = {none},
+    name = honor@zh,
+  },
+  honor-affiliation = {
+    default = {none},
+    name = honor@affiliation,
+  },
+  honor-affiliation* = {
+    default = {none},
+    name = honor@affiliation@zh,
+  },
+  honor-time = {
+    default = {none},
+    name = honor@time,
+  },
+  honor-time* = {
+    default = {none},
+    name = honor@time@zh,
+  },
+}
+\newcommand\xia@empty@honor{
+  \xiasetup{
+    honor = {none},
+    honor* = {none},
+    honor-affiliation = {none},
+    honor-affiliation* = {none},
+    honor-time = {none},
+    honor-time* = {none},
+  }
+}
+
+% Namespace to render skills.
+\xia@define@key{
+  skill = {
+    default = {none},
+  },
+  skill* = {
+    default = {none},
+    name = skill@zh,
+  },
+  skill-intro = {
+    default = {none},
+    name = skill@intro,
+  },
+  skill-intro* = {
+    default = {none},
+    name = skill@intro@zh,
+  },
+}
+\newcommand\xia@empty@skill{
+  \xiasetup{
+    skill = {none},
+    skill* = {none},
+    skill-intro = {none},
+    skill-intro* = {none},
   }
 }

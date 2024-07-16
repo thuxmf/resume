@@ -1,0 +1,29 @@
+# Skill.
+skill:
+    # First skill.
+    - skill1:
+        skill: Skill in English
+        skill*: Skill in Chinese
+        skill-intro: Brief intro in English
+        skill-intro*: Brief intro in Chinese
+
+    # Second skill.
+    - skill2:
+        skill: Skill in English
+        skill*: Skill in Chinese
+        skill-intro: Brief intro in English
+        skill-intro*: Brief intro in Chinese
+
+    # Third skill.
+    - skill3:
+        skill: Skill in English
+        skill*: Skill in Chinese
+        skill-intro: Brief intro in English
+        skill-intro*: Brief intro in Chinese
+
+    # Fourth skill.
+    - skill4:
+        skill: Skill in English
+        skill*: Skill in Chinese
+        skill-intro: Brief intro in English
+        skill-intro*: Brief intro in Chinese

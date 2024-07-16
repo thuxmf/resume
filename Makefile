@@ -4,7 +4,7 @@ PACKAGE = resume_xia
 DATA = data
 RESUME  = resume
 CLSFILE = $(PACKAGE).cls
-STYLE_FILE = xia.sty
+STYLE_FILE = mengfei_xia.sty
 
 LATEXMK = latexmk
 XELATEX = xelatex

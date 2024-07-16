@@ -6,6 +6,8 @@ experience:
         exp*: Experience company in Chinese
         exp-type: Experience type in English
         exp-type*: Experience type in Chinese
+        exp-location: Experience location in English
+        exp-location*: Experience location in Chinese
         exp-intro: Experience intro in English, omit if delete
         exp-intro*: Experience intro in Chinese, omit if delete
         exp-time: Experience period in English
@@ -17,5 +19,7 @@ experience:
         exp*: Experience company in Chinese
         exp-type: Experience type in English
         exp-type*: Experience type in Chinese
+        exp-location: Experience location in English
+        exp-location*: Experience location in Chinese
         exp-time: Experience period in English
         exp-time*: Experience period in Chinese

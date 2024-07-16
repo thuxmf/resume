@@ -1,0 +1,19 @@
+# Honor.
+honor:
+    # First honor.
+    - honor1:
+        honor: Honor in English
+        honor*: Honor in Chinese
+        honor-affiliation: Affiliation in English
+        honor-affiliation*: Affiliation in Chinese
+        honor-time: Time in English
+        honor-time*: Time in Chinese
+
+    # Second honor.
+    - honor2:
+        honor: Honor in English
+        honor*: Honor in Chinese
+        honor-affiliation: Affiliation in English
+        honor-affiliation*: Affiliation in Chinese
+        honor-time: Time in English
+        honor-time*: Time in Chinese

@@ -1,0 +1,331 @@
+% Copyright (C) by Mengfei Xia <xiamengfei0409@gmail.com>
+% 07/17/2024 v1.1
+
+\ProvidesClass{styles/yujun_shen}
+[07/17/2024 v1.1 Resume Template File @ Mengfei Xia]
+\NeedsTeXFormat{LaTeX2e}
+\@ifl@t@r\fmtversion{2017/04/15}{}{
+  \xia@error{%
+    TeX Live 2017 or later version is required to compile this document%
+  }
+}
+\PassOptionsToClass{letterpaper,11pt}{ctexart}
+
+\RequirePackage{latexsym}
+\RequirePackage[empty]{fullpage}
+\RequirePackage{titlesec}
+\RequirePackage{marvosym}
+% \RequirePackage[usenames,dvipsnames]{color}
+\RequirePackage{verbatim}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{multicol}
+\RequirePackage[pagebackref=false,breaklinks=true,colorlinks=true,linkcolor=black,bookmarks=false]{hyperref}
+\RequirePackage{tabularx}
+\RequirePackage{tikz}
+\RequirePackage{xspace}
+\RequirePackage{xcolor}
+\RequirePackage{palatino}
+\RequirePackage{wrapfig}
+\urlstyle{same}
+
+
+\pagestyle{fancy}
+\fancyhf{}  % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Define names.
+\newcommand\xia@set@names{%
+  \ifxia@language@english
+    \def\xia@resume@education{Educations}
+    \def\xia@resume@publication{Publications}
+    \def\xia@resume@experience{Experiences}
+    \def\xia@resume@phone{Mobile}
+    \def\xia@resume@email{Email}
+    \def\xia@resume@homepage{Homepage}
+    \def\xia@resume@googlescholar{Google Scholar}
+    \def\xia@resume@linkedin{LinkedIn}
+    \def\xia@resume@activity{Professional Activities}
+    \def\xia@resume@honor{Honors and Awards}
+    \def\xia@resume@skill{Skills and Others}
+  \else
+    \def\xia@resume@education{教育经历}
+    \def\xia@resume@publication{发表文章}
+    \def\xia@resume@experience{经历}
+    \def\xia@resume@phone{电话}
+    \def\xia@resume@email{邮箱}
+    \def\xia@resume@homepage{主页}
+    \def\xia@resume@googlescholar{谷歌学术}
+    \def\xia@resume@linkedin{领英}
+    \def\xia@resume@activity{学术活动}
+    \def\xia@resume@honor{获奖情况}
+    \def\xia@resume@skill{其他技能}
+  \fi
+}
+\xia@set@names
+\xia@option@hook{language}{\xia@set@names}
+
+% Adjust margins
+\addtolength{\textwidth}{80pt}
+\addtolength{\textheight}{95pt}
+\addtolength{\topmargin}{-52pt}
+\addtolength{\oddsidemargin}{-43pt}
+\addtolength{\evensidemargin}{-43pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{10pt}
+
+% Sections formatting
+\titleformat{\section}{\vspace{-4pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Define info style.
+\newcommand{\info}{%
+\ifxia@language@chinese
+  \let\xia@name\xia@name@zh
+\fi
+{\raggedright\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{{\Large\xia@name}}      & \xia@resume@email : \xia@email \\
+  \xia@resume@homepage : \url{\xia@homepage}   & \xia@resume@phone : \xia@phone \\
+\end{tabular*}}
+}
+
+% Custom commands
+\renewcommand{\labelitemii}{$\circ$}
+\newcommand{\resumeSubHeadingListBegin}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.977\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1}       & #2 \vspace{-0.05in} \\
+      \textit{\small#4} & \textit{\small #3}
+    \end{tabular*}\vspace{-5pt}
+}
+\newcommand{\paperSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.975\textwidth}{l@{\extracolsep{\fill}}r}
+      {\small #1} & {\small #2} \vspace{-0.1in} \\
+      % \multicolumn{2}{l}{\textit{\footnotesize \textcolor{gray}{#3}}}
+      \textit{\footnotesize \textcolor{gray}{#4}} & {\footnotesize #3}
+    \end{tabular*}\vspace{-6pt}
+}
+\newcommand{\resumeItemListBegin}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItem}[1]{\item\small{#1}\vspace{-2pt}}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+% Define environments.
+\newenvironment{education}{
+  \section{\xia@resume@education}
+  \par
+}{%
+  \par
+}
+\newenvironment{publication}{
+  \section{\xia@resume@publication}
+  \par
+  \ifxia@language@english
+    \noindent $^*$ equal contribution\quad$^\dag$ corresponding author
+  \else
+    \noindent $^*$ 共一\quad$^\dag$ 通讯作者
+  \fi
+  \par
+  \vspace{-0.3\baselineskip}
+}{%
+  \par
+}
+\newenvironment{experience}{
+  \section{\xia@resume@experience}
+  \par
+}{%
+  \par
+}
+\newenvironment{activity}{
+  \section{\xia@resume@activity}
+  \par
+}{%
+  \par
+}
+\newenvironment{honor}{
+  \section{\xia@resume@honor}
+  \par
+}{%
+  \par
+}
+\newenvironment{skill}{
+  \section{\xia@resume@skill}
+  \par
+  \begin{tabular}{@{}l@{\extracolsep{\fill}}r@{}}
+}{%
+  \end{tabular}
+  \par
+}
+
+% Render education.
+\newcommand\rendereducation{
+  \resumeSubHeadingListBegin
+  \ifxia@language@english
+    \ifx\xia@edu@school\xia@none
+    \else
+      \resumeSubheading{\xia@edu@school}{\xia@edu@time}{\xia@edu@location}{\xia@edu@intro}
+    \fi
+  \else
+    \ifx\xia@edu@school@zh\xia@none
+    \else
+      \resumeSubheading{\xia@edu@school@zh}{\xia@edu@time@zh}{\xia@edu@location@zh}{\xia@edu@intro@zh}
+    \fi
+  \fi
+  \resumeSubHeadingListEnd
+  \vspace{-0.13in}
+  \xia@empty@education
+}
+
+% Render publications.
+\newcommand\xia@contrib[1]{
+  \ifx#1\xia@none
+    \hskip -5pt
+  \else
+    \ifx#1\equal
+      \hskip -2pt$^*$\hskip -3pt
+    \else
+      \hskip -2pt$^\dag$\hskip -3pt
+    \fi
+  \fi
+}
+\newcommand\xia@status[1]{
+  \ifx#1\xia@none
+  \else
+    \ifx#1\under
+      (under review)
+    \fi
+    \ifx#1\oral
+      oral
+    \fi
+    \ifx#1\spotlight
+      spotlightxiecheng
+    \fi
+  \fi
+}
+\newcommand\xia@render@pub@firstauthor[2]{
+  \ifx#1\xia@none
+  \else
+    \ifx#1\xia@name
+      \textbf{\textcolor{black}{#1}\xia@contrib{#2}}
+    \else
+      \textcolor{gray}{#1\xia@contrib{#2}}
+    \fi
+  \fi
+}
+\newcommand\xia@render@pub@author[2]{
+  \ifx#1\xia@none
+  \else
+    \ifx#1\xia@name
+      \hskip -4pt\textbf{\textcolor{gray}{, }\textcolor{black}{#1}\xia@contrib{#2}}
+    \else
+      \hskip -4pt\textcolor{gray}{, #1\xia@contrib{#2}}
+    \fi
+  \fi
+}
+\newcommand\renderpublication{
+  \ifx\xia@pub@title\xia@none
+  \else
+  \resumeSubHeadingListBegin
+    \paperSubheading{\xia@pub@title}{\xia@pub@location}{\xia@status{\xia@pub@status}}{%
+      \xia@render@pub@firstauthor{\xia@pub@author@a}{\xia@pub@contrib@a}
+      \xia@render@pub@author{\xia@pub@author@b}{\xia@pub@contrib@b}
+      \xia@render@pub@author{\xia@pub@author@c}{\xia@pub@contrib@c}
+      \xia@render@pub@author{\xia@pub@author@d}{\xia@pub@contrib@d}
+      \xia@render@pub@author{\xia@pub@author@e}{\xia@pub@contrib@e}
+      \xia@render@pub@author{\xia@pub@author@f}{\xia@pub@contrib@f}
+      \xia@render@pub@author{\xia@pub@author@g}{\xia@pub@contrib@g}
+      \xia@render@pub@author{\xia@pub@author@h}{\xia@pub@contrib@h}
+      \xia@render@pub@author{\xia@pub@author@i}{\xia@pub@contrib@i}
+      \xia@render@pub@author{\xia@pub@author@j}{\xia@pub@contrib@j}
+    }
+  \resumeSubHeadingListEnd
+  \vspace{-0.2in}
+  \xia@empty@publication
+  \fi
+}
+
+% Render experiences.
+\newcommand\renderexperience{
+  \ifx\xia@exp@time@zh\xia@none
+    \let\xia@exp@time@zh\xia@exp@time
+  \fi
+  \ifxia@language@english
+    \ifx\xia@exp\xia@none
+    \else
+      \resumeSubHeadingListBegin
+        \resumeSubheading{\xia@exp}{\xia@exp@time}{\xia@exp@location}{\xia@exp@type}
+      \resumeSubHeadingListEnd
+    \fi
+  \else
+    \ifx\xia@exp@zh\xia@none
+    \else
+      \resumeSubHeadingListBegin
+        \resumeSubheading{\xia@exp@zh}{\xia@exp@time@zh}{\xia@exp@location@zh}{\xia@exp@type@zh}
+      \resumeSubHeadingListEnd
+    \fi
+  \fi
+  \xia@empty@experience
+  \vspace{-0.2in}
+}
+
+% Render activities.
+\newcommand\renderactivity{
+  \ifxia@language@english
+    \ifx\xia@act\xia@none
+    \else
+      \resumeSubHeadingListBegin
+        \resumeSubItem{\textbf{\xia@act :} \xia@act@explanation}
+      \resumeSubHeadingListEnd
+    \fi
+  \else
+    \ifx\xia@act@zh\xia@none
+    \else
+      \resumeSubHeadingListBegin
+        \resumeSubItem{\textbf{\xia@act@zh：}\xia@act@explanation@zh}
+      \resumeSubHeadingListEnd
+    \fi
+  \fi
+  \xia@empty@activity
+}
+
+% Render honors.
+\newcommand\renderhonor{
+  \ifxia@language@english
+    \ifx\xia@honor\xia@none
+    \else
+      \resumeSubHeadingListBegin
+        \resumeSubItem{\textbf{\xia@honor}, \xia@honor@affiliation, \xia@honor@time}
+      \resumeSubHeadingListEnd
+    \fi
+  \else
+    \ifx\xia@honor@zh\xia@none
+    \else
+      \resumeSubHeadingListBegin
+        \resumeSubItem{\textbf{\xia@honor@zh}，\xia@honor@affiliation@zh，\xia@honor@time@zh}
+      \resumeSubHeadingListEnd
+    \fi
+  \fi
+  \xia@empty@honor
+}
+
+% Render skills.
+\newcommand\tabitem{\hskip -26pt\textbullet~~}
+\newcommand\renderskill[1]{
+  \ifxia@language@english
+    \ifthenelse{\equal{#1}{\le}}{%
+      \tabitem \begin{minipage}[b]{0.5\linewidth}\textbf{\xia@skill :} \xia@skill@intro\end{minipage} &
+    }{%
+      \hfill \tabitem \begin{minipage}[b]{0.5\linewidth}\textbf{\xia@skill :} \xia@skill@intro\end{minipage} \\
+    }
+  \else
+    \ifthenelse{\equal{#1}{\le}}{%
+      \tabitem \begin{minipage}[b]{0.5\linewidth}\textbf{\xia@skill@zh：} \xia@skill@intro@zh\end{minipage} &
+    }{%
+      \hfill \tabitem \begin{minipage}[b]{0.5\linewidth}\textbf{\xia@skill@zh：} \xia@skill@intro@zh\end{minipage} \\
+    }
+  \fi
+}
